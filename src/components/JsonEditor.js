@@ -14,7 +14,7 @@ export default function JsonEditor() {
   return (
     <div>
       <Accordion>
-        <AccordionSummary
+        <AccordionSummary 
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"

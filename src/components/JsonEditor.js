@@ -1,81 +1,53 @@
 import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import JsonFormBuilder from './editors/formbuilder'
 
-const jsonData = [
-  {"data1":"a","data2":"b"},
-  {"data1":"a1","data2":"b2"}
-]
-https://github.com/jdorn/json-editor/blob/master/src/validator.js
+const jsonData = {
+  "root" : [
+    {"data1":"a","data2":"b"},
+    {"data1":"a1","data2":"b2"},
+    {"data1":"a2","data2":"b3"}
+  ]
+}
+
+const jsonSchema = {
+  "title": "root",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 3,
+  "items": {
+    "title": "group",
+    "type": "object",
+    "properties": {
+      "latitude": {
+        "title": "number1",
+        "type": "number",
+        "minimum": -90,
+        "maximum": 90
+      },
+      "longitude": {
+        "title": "number2",
+        "type": "number",
+        "minimum": -180,
+        "maximum": 180
+      }
+    }
+  }
+}
+
+//https://github.com/jdorn/json-editor/blob/master/src/validator.js
+
 export default function JsonEditor() {
 
-  function formRoot(key, data) {
-    console.log(key, data)
-    return (      
-            <Accordion key={key}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{data.data1}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-    )
-  }
-
-  function formBuild(data) {
+  function formRoot(schema, data) {
+    console.log(schema, data)
     return (
-      <div>
-        { 
-          Object.keys(data).map((e, i) => {
-            return formRoot(i, data[e]);
-          })
-        }
-      </div>
+      <JsonFormBuilder schema={schema} data={data}/>
     )
   }
 
   return (
     <div>
-      {formBuild(jsonData)}
-      {/* <div>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>test</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-          </AccordionDetails>
-        </Accordion>
-      <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Accordion 2</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </div> */}
+      {formRoot(jsonSchema, undefined)}
     </div>
   );
 }

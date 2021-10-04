@@ -7,9 +7,13 @@ export default function JsonStringEdit(props) {
 
     return (
         <AccordionDetails>
-            <Typography>
-                <TextField id="outlined-basic" label="object input" variant="outlined" />
-            </Typography>
+            <TextField
+                fullWidth
+                id="outlined-required"
+                label={props.schema.title}
+                InputLabelProps={{ shrink: true }}
+                size="small"
+            />
         </AccordionDetails>
     );
 }

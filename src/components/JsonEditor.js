@@ -11,24 +11,34 @@ const jsonData = {
 
 const jsonSchema = {
   "title": "root",
-  "type": "array",
-  "minItems": 1,
-  "maxItems": 3,
-  "items": {
-    "title": "group",
-    "type": "object",
-    "properties": {
-      "latitude": {
-        "title": "number1",
-        "type": "number",
-        "minimum": -90,
-        "maximum": 90
-      },
-      "longitude": {
-        "title": "number2",
-        "type": "number",
-        "minimum": -180,
-        "maximum": 180
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "title": "number test",
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "title": "list",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "title": "group",
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "title": "number test",
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "title": "string test",
+            "type": "string"
+          }
+        }
       }
     }
   }

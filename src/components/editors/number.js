@@ -1,20 +1,23 @@
 import * as React from 'react';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import TextField from '@mui/material/TextField';
+import JsonSelectEdit from './select'
 
 export default function JsonNumberEdit(props) {
     return (
         <AccordionDetails>
-            <TextField
-                fullWidth
-                id="outlined-required"
-                label={props.schema.title}
-                defaultValue={props.data}
-                type="number"
-                InputLabelProps={{ shrink: true }}
-                size="small"
-            />
-            {/* <Slider aria-valuetext='asdf' defaultValue={props.value} step={1} marks min={0} max={100} valueLabelDisplay="auto" /> */}
+            {(props.schema.enum === undefined) ?
+                <TextField
+                    fullWidth
+                    id="outlined-required"
+                    label={props.schema.title}
+                    defaultValue={props.data}
+                    type="number"
+                    InputLabelProps={{ shrink: true }}
+                    size="small"
+                /> :
+                <JsonSelectEdit index={props.index} schema={props.schema} data={props.data} />
+            }
         </AccordionDetails>
     );
 }

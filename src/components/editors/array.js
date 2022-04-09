@@ -32,6 +32,7 @@ export default function JsonArrayEdit(props) {
     }
 
     const DepthAccordion = styled(Accordion)(({ theme }) => ({
+        borderTop: '1px solid rgba(0, 0, 0, 1)',
         borderLeft: '10px solid rgba(150, 0, 0, .15)'
     }))
 

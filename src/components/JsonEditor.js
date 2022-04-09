@@ -3,15 +3,16 @@ import JsonFormBuilder from './editors/formbuilder'
 
 const jsonData = {
   "first" : "100",
-  "second" : [{
-    "sub-number" : "10",
-    "sub-text" : "sub text1"
-  },
-  {
-    "sub-number" : "20",
-    "sub-text" : "sub text2"
-  }
-]
+  "second": [{
+      "sub-number": "10",
+      "sub-text": "sub text1"
+    },
+    {
+      "sub-number": "20",
+      "sub-text": "sub text2"
+    }
+  ],
+  "third" : "B type"
 }
 
 const jsonSchema = {
@@ -45,6 +46,11 @@ const jsonSchema = {
           }
         }
       }
+    },
+    "third" : {
+      "title": "select test",
+      "type": "string",
+      "enum": ["A type", "B type", "C type"]
     }
   }
 }

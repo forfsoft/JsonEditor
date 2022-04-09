@@ -7,17 +7,18 @@ import JsonArrayEdit from './array'
 export default function JsonFormBuilder(props) {
 
     function createForm(index, schema, data) {
-        console.log('create form:', schema)
-        if (schema.type == 'number') {
+        // var alias = schema.type + "_" + schema.title + "_" + index
+        // console.log('create form:', schema, alias)
+        if (schema.type === 'number') {
             return (<JsonNumberEdit index={index} schema={schema} data={data} />)
         }
-        else if (schema.type == 'string') {
+        else if (schema.type === 'string') {
             return (<JsonStringEdit index={index} schema={schema} data={data} />)
         }
-        else if (schema.type == 'object') {
+        else if (schema.type === 'object') {
             return (<JsonObjectEdit index={index} schema={schema} data={data} />)
         }
-        else if (schema.type == 'array') {
+        else if (schema.type === 'array') {
             return (<JsonArrayEdit schema={schema} data={data} />)
         }
         return undefined;

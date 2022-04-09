@@ -2,24 +2,29 @@ import * as React from 'react';
 import JsonFormBuilder from './editors/formbuilder'
 
 const jsonData = {
-  "root" : [
-    {"data1":"a","data2":"b"},
-    {"data1":"a1","data2":"b2"},
-    {"data1":"a2","data2":"b3"}
-  ]
+  "first" : "100",
+  "second" : [{
+    "sub-number" : "10",
+    "sub-text" : "sub text1"
+  },
+  {
+    "sub-number" : "20",
+    "sub-text" : "sub text2"
+  }
+]
 }
 
 const jsonSchema = {
   "title": "root",
   "type": "object",
   "properties": {
-    "latitude": {
+    "first": {
       "title": "number test",
       "type": "number",
-      "minimum": -90,
-      "maximum": 90
+      "minimum": -100,
+      "maximum": 100
     },
-    "longitude": {
+    "second": {
       "title": "list",
       "type": "array",
       "minItems": 1,
@@ -28,14 +33,14 @@ const jsonSchema = {
         "title": "group",
         "type": "object",
         "properties": {
-          "latitude": {
-            "title": "number test",
+          "sub-number": {
+            "title": "sub-number",
             "type": "number",
-            "minimum": -90,
-            "maximum": 90
+            "minimum": -50,
+            "maximum": 50
           },
-          "longitude": {
-            "title": "string test",
+          "sub-text": {
+            "title": "sub-string",
             "type": "string"
           }
         }
@@ -57,7 +62,7 @@ export default function JsonEditor() {
 
   return (
     <div>
-      {formRoot(jsonSchema, undefined)}
+      {formRoot(jsonSchema, jsonData)}
     </div>
   );
 }

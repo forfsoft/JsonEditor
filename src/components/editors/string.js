@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
 export default function JsonStringEdit(props) {
@@ -11,6 +10,7 @@ export default function JsonStringEdit(props) {
                 fullWidth
                 id="outlined-required"
                 label={props.schema.title}
+                defaultValue={props.data}
                 InputLabelProps={{ shrink: true }}
                 size="small"
             />
